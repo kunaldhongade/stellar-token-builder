@@ -4,23 +4,11 @@
 
 _“Empower your ideas with tokens. Trade, manage, and launch seamlessly.”_
 
----
-
-<!-- ℹ️  Transaction hash is 7ac35f5a1a7d4b26e61afb4363be335ff600564f1513b842862cf66d9743d12f
-🔗 https://stellar.expert/explorer/testnet/tx/7ac35f5a1a7d4b26e61afb4363be335ff600564f1513b842862cf66d9743d12f
-🔗 https://stellar.expert/explorer/testnet/contract/CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD
-✅ Deployed!
-CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD -->
-
 ## 🎉 **Deployment Successful!**
 
-ℹ️ **Transaction Hash**: `7ac35f5a1a7d4b26e61afb4363be335ff600564f1513b842862cf66d9743d12f`
+🔗 [Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CBSZTRZYLMZI4PMU34MBO5KRCBQ3P4CSLIPV3QSHUITO7TTXFYOVK3QO)
 
-🔗 [View transaction on Stellar Expert](https://stellar.expert/explorer/testnet/tx/7ac35f5a1a7d4b26e61afb4363be335ff600564f1513b842862cf66d9743d12f)
-
-🔗 [Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD)
-
-✅ **Deployed Contract ID**: `CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD`
+✅ **Deployed Contract ID**: `CBSZTRZYLMZI4PMU34MBO5KRCBQ3P4CSLIPV3QSHUITO7TTXFYOVK3QO`
 
 ## 📖 **Table of Contents**
 
@@ -37,13 +25,9 @@ CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD -->
 - [Community & Support](#-community--support)
 - [License](#-license)
 
----
-
 ## ✨ **Overview**
 
 **LumiFi** is an **end-to-end decentralized finance (DeFi) launchpad** built on the **Stellar Soroban smart contract platform**. It enables users to **mint tokens, run ICO campaigns, manage liquidity pools, and trade tokens via a DEX**. Whether you are a startup launching a token or a trader looking for new opportunities, LumiFi makes DeFi **fast, simple, and affordable**.
-
----
 
 ## 🚀 **Features**
 
@@ -53,8 +37,6 @@ CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD -->
 - **🔄 Decentralized Exchange (DEX)**: Trade tokens seamlessly via automated market maker (AMM).
 - **🔗 IPFS Integration**: Store token metadata and images on IPFS.
 - **⚡ Fast & Low Cost**: Built on Stellar with low fees and quick finality.
-
----
 
 ## 🛠️ **Smart Contract Overview**
 
@@ -78,8 +60,6 @@ Launches token sales with configurable pricing and supply.
 Provides liquidity and enables token swaps via AMM logic.  
 **File**: [`src/liquidity_pool.rs`](./src/liquidity_pool.rs)
 
----
-
 ## ⚙️ **Installation**
 
 ### Prerequisites
@@ -100,8 +80,6 @@ cd lumifi
 cargo build --target wasm32-unknown-unknown --release
 ```
 
----
-
 ## 🚢 **Deployment**
 
 ### Step 1: Deploy the Smart Contracts on Futurenet
@@ -120,8 +98,6 @@ soroban invoke \
   --network futurenet
 ```
 
----
-
 ## 📈 **Usage**
 
 1. **Create Tokens**  
@@ -135,8 +111,6 @@ soroban invoke \
 
 4. **Trade Tokens**  
    Use the **Liquidity Pool contract** to swap tokens and participate in DeFi markets.
-
----
 
 ## 🧪 **Testing**
 
@@ -161,8 +135,6 @@ fn test_token_transfer() {
 }
 ```
 
----
-
 ## 🛣️ **Roadmap**
 
 - **Phase 1**: Complete smart contract development and deploy on Futurenet.
@@ -170,16 +142,12 @@ fn test_token_transfer() {
 - **Phase 3**: Integrate wallet solutions (Freighter, Albedo).
 - **Phase 4**: Mainnet deployment and liquidity mining rewards.
 
----
-
 ## 🛡️ **Security**
 
 - **Ownership Controls**: Only token owners can mint or burn tokens.
 - **Reentrancy Guards**: Prevent exploits during token swaps and liquidity operations.
 - **Auditing**: Planned third-party security audits before mainnet launch.
 - **Slippage Management**: Prevent large slippage on trades.
-
----
 
 ## 🤝 **Contributing**
 
@@ -191,8 +159,6 @@ We welcome contributions! To get started:
 4. Push your branch (`git push origin feature-branch`).
 5. Open a pull request.
 
----
-
 ## 💬 **Community & Support**
 
 Stay connected with the LumiFi community:
@@ -203,18 +169,12 @@ Stay connected with the LumiFi community:
 
 Have questions? Open an issue or join our Discord for help!
 
----
-
 ## 📜 **License**
 
 This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
 
----
-
 ## ✨ **Get Started Today!**
 
 Create, trade, and launch your tokens with LumiFi—the future of decentralized finance is here! 🚀
-
----
 
 Feel free to modify any section based on your specific needs. Let me know if anything needs to be added or changed!
