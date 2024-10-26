@@ -1,8 +1,10 @@
-# 🌟 **LumiFi**: Illuminate Your Finance
+# **Stellar Token Builder**
 
-<!-- ![LumiFi Banner]()   -->
+## **Overview**
 
-_“Empower your ideas with tokens. Trade, manage, and launch seamlessly.”_
+LumiFi Token Builder is a smart contract project built using **Soroban SDK** on the Stellar blockchain. It enables users to create custom tokens, manage liquidity pools, and perform token swaps efficiently. This project offers a powerful toolset for decentralized finance (DeFi) applications and token-based ecosystems.
+
+---
 
 ## 🎉 **Deployment Successful!**
 
@@ -10,171 +12,170 @@ _“Empower your ideas with tokens. Trade, manage, and launch seamlessly.”_
 
 ✅ **Deployed Contract ID**: `CBSZTRZYLMZI4PMU34MBO5KRCBQ3P4CSLIPV3QSHUITO7TTXFYOVK3QO`
 
-## 📖 **Table of Contents**
+---
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Smart Contract Overview](#-smart-contract-overview)
-- [Installation](#️-installation)
-- [Deployment](#-deployment)
-- [Usage](#-usage)
-- [Testing](#-testing)
-- [Roadmap](#-roadmap)
-- [Security](#-security)
-- [Contributing](#-contributing)
-- [Community & Support](#-community--support)
-- [License](#-license)
+## **Features**
 
-## ✨ **Overview**
+- **Token Creation:** Easily create custom tokens with specified names, symbols, and decimals.
+- **Minting and Transfers:** Admins can mint tokens to users, and users can transfer tokens securely.
+- **Liquidity Pools:** Add and withdraw liquidity in pools to facilitate decentralized trading.
+- **Token Swaps:** Swap one token for another with minimal slippage, ensuring smooth transactions.
+- **Secure Authorization:** Ensures that only authorized users can perform specific actions, like minting or transfers.
 
-**LumiFi** is an **end-to-end decentralized finance (DeFi) launchpad** built on the **Stellar Soroban smart contract platform**. It enables users to **mint tokens, run ICO campaigns, manage liquidity pools, and trade tokens via a DEX**. Whether you are a startup launching a token or a trader looking for new opportunities, LumiFi makes DeFi **fast, simple, and affordable**.
+---
 
-## 🚀 **Features**
+## **Contract Architecture**
 
-- **🔨 Token Factory**: Create custom tokens with metadata and supply.
-- **💸 ICO Launchpad**: Host token sales with dynamic pricing and supply caps.
-- **🌊 Liquidity Pools & AMM**: Add liquidity to pools and earn rewards.
-- **🔄 Decentralized Exchange (DEX)**: Trade tokens seamlessly via automated market maker (AMM).
-- **🔗 IPFS Integration**: Store token metadata and images on IPFS.
-- **⚡ Fast & Low Cost**: Built on Stellar with low fees and quick finality.
+1. **`Token` Contract:**
+   - Handles token creation, minting, and transferring.
+2. **`LiquidityPool` Contract:**
+   - Manages liquidity addition and removal, enabling decentralized trading.
+3. **`Swap` Contract:**
+   - Allows users to swap one token for another securely.
 
-## 🛠️ **Smart Contract Overview**
+---
 
-### **1️⃣ Token Factory**
+## **How to Use**
 
-Allows users to mint tokens with a name, symbol, decimals, and supply.  
-**File**: [`src/token_factory.rs`](./src/token_factory.rs)
+### 1. **Setup Environment**
 
-### **2️⃣ Token Contract**
+Make sure you have the following installed:
 
-Manages token minting, burning, and transfers.  
-**File**: [`src/token.rs`](./src/token.rs)
+- **Rust**: [Install Rust](https://www.rust-lang.org/tools/install)
+- **Soroban CLI**: [Install Soroban CLI](https://soroban.stellar.org/docs/getting-started/setup)
 
-### **3️⃣ ICO Contract**
-
-Launches token sales with configurable pricing and supply.  
-**File**: [`src/ico.rs`](./src/ico.rs)
-
-### **4️⃣ Liquidity Pool & AMM**
-
-Provides liquidity and enables token swaps via AMM logic.  
-**File**: [`src/liquidity_pool.rs`](./src/liquidity_pool.rs)
-
-## ⚙️ **Installation**
-
-### Prerequisites
-
-- **Rust**: Install from [rustup.rs](https://rustup.rs)
-- **Soroban CLI**: Install following the [Soroban documentation](https://soroban.stellar.org/docs/getting-started/cli)
-
-### Clone the Repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/your-repo/lumifi.git
-cd lumifi
+git clone https//www.github.com/kunaldhongade/stellar-token-builder
+cd stellar-token-builder
 ```
 
-### Build the Project
+---
+
+### 2. **Build and Deploy Contracts**
+
+Compile the smart contracts:
 
 ```bash
-cargo build --target wasm32-unknown-unknown --release
+soroban contract build
 ```
 
-## 🚢 **Deployment**
-
-### Step 1: Deploy the Smart Contracts on Futurenet
+Deploy the contracts using the Soroban CLI:
 
 ```bash
-soroban deploy --wasm target/wasm32-unknown-unknown/release/<contract_name>.wasm --network futurenet
+soroban contract deploy --wasm target/wasm32-unknown-unknown/release/lumifi_token_laucher.wasm
 ```
 
-### Step 2: Example – Create a Token with TokenFactory
+---
 
-```bash
-soroban invoke \
-  --id <factory_contract_id> \
-  --fn create_token \
-  --arg '{"name": "MyToken", "symbol": "MTK", "decimals": 18, "initial_supply": 1000000, "owner": "<your_address>"}' \
-  --network futurenet
-```
+### 3. **Contract Functions**
 
-## 📈 **Usage**
+#### **Token Contract**
 
-1. **Create Tokens**  
-   Use the **TokenFactory** contract to mint new tokens with metadata.
+- **Create Token**
 
-2. **Launch an ICO**  
-   Run an ICO campaign using the **ICO contract** to raise funds.
+  ```rust
+  Token::create_token(env, admin_address, 18, "MyToken".into(), "MTK".into());
+  ```
 
-3. **Add Liquidity**  
-   Provide liquidity in **AMM-based pools** and earn LP rewards.
+  - Creates a new token with specified name, symbol, and decimals.
 
-4. **Trade Tokens**  
-   Use the **Liquidity Pool contract** to swap tokens and participate in DeFi markets.
+- **Mint Tokens**
 
-## 🧪 **Testing**
+  ```rust
+  Token::mint(env, user_address, 1000);
+  ```
 
-### Run Unit Tests
+  - Mints `1000` tokens to the specified user.
 
-```bash
-cargo test
-```
+- **Transfer Tokens**
 
-### Example: Test Token Transfer
+  ```rust
+  Token::transfer(env, from_address, to_address, 100);
+  ```
 
-```rust
-#[test]
-fn test_token_transfer() {
-    let env = Env::default();
-    let owner = Address::random(&env);
-    let recipient = Address::random(&env);
+  - Transfers `100` tokens from one user to another.
 
-    Token::init(env.clone(), "LumiCoin".into(), "LC".into(), 18, 1000, owner.clone());
-    Token::transfer(env, owner.clone(), recipient.clone(), 500);
-    assert_eq!(Token::balance_of(env, recipient), 500);
-}
-```
+- **Check Balance**
+  ```rust
+  let balance = Token::balance(env, user_address);
+  println!("User balance: {}", balance);
+  ```
+  - Retrieves the balance of a specific user.
 
-## 🛣️ **Roadmap**
+#### **Liquidity Pool Contract**
 
-- **Phase 1**: Complete smart contract development and deploy on Futurenet.
-- **Phase 2**: Build a front-end interface with React/Next.js.
-- **Phase 3**: Integrate wallet solutions (Freighter, Albedo).
-- **Phase 4**: Mainnet deployment and liquidity mining rewards.
+- **Initialize Pool**
 
-## 🛡️ **Security**
+  ```rust
+  LiquidityPool::initialize_liquidity(env, token_a_address, token_b_address);
+  ```
 
-- **Ownership Controls**: Only token owners can mint or burn tokens.
-- **Reentrancy Guards**: Prevent exploits during token swaps and liquidity operations.
-- **Auditing**: Planned third-party security audits before mainnet launch.
-- **Slippage Management**: Prevent large slippage on trades.
+  - Sets up a new liquidity pool for two tokens.
 
-## 🤝 **Contributing**
+- **Deposit Liquidity**
 
-We welcome contributions! To get started:
+  ```rust
+  LiquidityPool::deposit(env, user_address, 500, 500);
+  ```
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit (`git commit -m "Add new feature"`).
-4. Push your branch (`git push origin feature-branch`).
-5. Open a pull request.
+  - Adds liquidity to the pool.
 
-## 💬 **Community & Support**
+- **Withdraw Liquidity**
+  ```rust
+  let (amount_a, amount_b) = LiquidityPool::withdraw(env, user_address, 100);
+  println!("Withdrawn: {} Token A, {} Token B", amount_a, amount_b);
+  ```
 
-Stay connected with the LumiFi community:
+#### **Swap Contract**
 
-- 🌐 [Website](https://lumifi.io)
-- 🐦 [Twitter](https://twitter.com/lumifi)
-- 💬 [Discord](https://discord.gg/lumifi)
+- **Perform Swap**
+  ```rust
+  Swap::swap(env, user_address, buy_token_address, sell_token_address, 100, 90);
+  ```
+  - Swaps `100` units of `sell_token` for `buy_token` with a minimum required `90`.
 
-Have questions? Open an issue or join our Discord for help!
+---
 
-## 📜 **License**
+## **Example Workflow**
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+1. **Create a Token**: Use the `Token::create_token()` function to deploy a new token.
+2. **Mint Tokens**: Mint tokens for yourself or users.
+3. **Add Liquidity**: Add liquidity to a pool for decentralized trading.
+4. **Swap Tokens**: Swap between tokens using the `Swap` contract.
+5. **Withdraw Liquidity**: Withdraw liquidity from the pool when needed.
 
-## ✨ **Get Started Today!**
+---
 
-Create, trade, and launch your tokens with LumiFi—the future of decentralized finance is here! 🚀
+## **Error Handling**
 
-Feel free to modify any section based on your specific needs. Let me know if anything needs to be added or changed!
+- **Slippage Exceeded:** The buy amount is less than the minimum specified during the swap.
+- **Insufficient Balance:** The user doesn't have enough tokens to complete a transaction.
+- **Unauthorized Access:** The action requires admin authorization (e.g., minting tokens).
+
+---
+
+## **Security Considerations**
+
+- **Authorization:** Uses Stellar’s native `require_auth()` to ensure only authorized users can perform sensitive operations.
+- **Slippage Protection:** Prevents swaps that result in unfavorable rates for users.
+- **Safe Storage:** Token balances are stored securely using the Soroban SDK's storage.
+
+---
+
+## **Contributing**
+
+We welcome contributions to enhance the LumiFi Token Builder! Feel free to submit a pull request or open an issue.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## **Acknowledgments**
+
+Thanks to the Stellar Development Foundation for the amazing Soroban SDK, and the open-source community for their valuable contributions!
